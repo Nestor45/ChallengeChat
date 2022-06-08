@@ -1,35 +1,33 @@
-import  {useState, useEffect} from "react"
-import { Grid,GridItem , Heading, Image, Box } from "@chakra-ui/react"
-
-import { LaunchItem } from "./components/LaunchItem"
-import * as API from "./services/launches"
+import { Routes, Route, Link} from "react-router-dom";
+import { Heading, Image, Box, Text } from "@chakra-ui/react"
+import {LaunchList} from "./components/LaunchList"
 import logo from "./assets/spaceX-Logo.png"
+import logoname from "./assets/spacex-logo-name.png"
+import { LaunchDetails } from "./components/LaunchDetails";
+import { NameCompo } from "./components/chatcomponents/NameCompo";
 
 function App() {
-  const [launches, setLaunches] = useState([])
-
-  useEffect(() => {
-    API.getAllLaunches().then(setLaunches)
-  }, [])
 
   return (
     <div>
-      <Box display='flex' alignItems='baseline'>
-        <Image m="4" src={logo} alt="" width={300} align="center"/>
-        <Heading as="h1" size="lg" m="4">SpaceX Lauches</Heading>
+      <Link to="/">
+        <Image m="4" src={logo} width={300} borderRadius='full'/>
+        <Image m="6" src={logoname} alt="" width={300}/>
+      </Link>
+      <Box maxW='32rem' display='flex' alignItems='baseline' shadow='lg' >
+        <Heading as="h1" size="lg" m="4" mb={4}>SpaceX Lauches</Heading>
+        <Link to="/chat">
+          <Text color="teal.500">
+            Create a free contact CHAT
+          </Text>
+        </Link>
       </Box>
-        
-        <Grid h='200px'
-          templateRows='repeat(5, 1fr)'
-          templateColumns='repeat(4, 1fr)'
-          gap={2}
-        >
-          {launches.map(launch => (
-            <GridItem colSpan={2}>
-              <LaunchItem key={launch.flight_number} {... launch}/>
-            </GridItem>
-          ))}
-        </Grid >
+
+      <Routes>
+        <Route path="/" element={<LaunchList/>}></Route>
+        <Route path="launch/:launchId" element={<LaunchDetails/>}></Route>
+        <Route path="/chat" element={<NameCompo/>}></Route>
+      </Routes>
     </div>
   )
 }
