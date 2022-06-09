@@ -8,17 +8,17 @@ export function LaunchItem (launch) {
             <Flex display="flex">
                 <Text fontSize="2xl">
                     Mission <strong> {launch.mission_name} </strong> ({launch.launch_year})
-                </Text>
-                <Spacer/>
-                <Tag p="2" colorScheme={launch.launch_success ?  "green" : "red"}>{launch.launch_success ?  "Success" : "Failure"}</Tag>
-            </Flex>
-            <Flex align="center">
-                <Icon as={HiCalendar} w="6" h="8" color="gray.600"></Icon>
-                <Text fontSize={"sm"} ml="4" color="gray.600"> 
-                {launch.launch_date_local}
-                </Text>
-            </Flex>
-            <Link to={`/launch/${launch.flight_number}`}><Button mt={2} colorScheme="purple">More Details</Button></Link>
-        </Box>
+                    </Text>
+                    <Spacer/>
+                    <Tag p="2" colorScheme={launch.launch_success ?  "green" : "red"}>{launch.launch_success ?  "Success" : "Failure"}</Tag>
+                </Flex>
+                <Flex align="center">
+                    <Icon as={HiCalendar} w="6" h="8" color="gray.600"></Icon>
+                    <Text fontSize={"sm"} ml="4" color="gray.600"> 
+                    {launch.launch_date_local}
+                    </Text>
+                </Flex>
+                <Button mt={2} colorScheme="purple">More Details</Button>
+            </Box>
     )
 }
