@@ -17,7 +17,6 @@ export function LaunchItem (launch) {
                     {launch.launch_date_local}
                     </Text>
                 </Flex>
-
                 <Button mt={2} colorScheme="purple">More Details</Button>
             </Box>
             

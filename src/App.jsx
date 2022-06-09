@@ -1,35 +1,28 @@
-import  {useState, useEffect} from "react"
-import { Grid,GridItem , Heading, Image, Box } from "@chakra-ui/react"
-
-import { LaunchItem } from "./components/LaunchItem"
-import * as API from "./services/launches"
+import { Heading, Image, Box, Text } from "@chakra-ui/react"
+import { Routes, Route, Link } from "react-router-dom"
+import { Launches } from "./components/Launches"
+import { NameComponent } from "./components/chatcomponents/NameComponent"
 import logo from "./assets/spaceX-Logo.png"
 
 function App() {
-  const [launches, setLaunches] = useState([])
-
-  useEffect(() => {
-    API.getAllLaunches().then(setLaunches)
-  }, [])
 
   return (
     <div>
-      <Box display='flex' alignItems='baseline'>
-        <Image m="4" src={logo} alt="" width={300} align="center"/>
-        <Heading as="h1" size="lg" m="4">SpaceX Lauches</Heading>
-      </Box>
-        
-        <Grid h='200px'
-          templateRows='repeat(5, 1fr)'
-          templateColumns='repeat(4, 1fr)'
-          gap={2}
-        >
-          {launches.map(launch => (
-            <GridItem colSpan={2}>
-              <LaunchItem key={launch.flight_number} {... launch}/>
-            </GridItem>
-          ))}
-        </Grid >
+      <Link to="/">
+        <Box display='flex' alignItems='baseline'>
+          <Image m="4" src={logo} alt="" width={300} align="center"/>
+          <Heading as="h1" size="lg" m="4">SpaceX Lauches</Heading>
+        </Box>
+      </Link>
+      <Link to="/chat">
+        <Text color="teal.300">Go Chat</Text>
+      </Link>
+      <Routes>
+        <Route path="/" element={<Launches/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/chat" element={<NameComponent/>}/>
+      </Routes>
     </div>
   )
 }
