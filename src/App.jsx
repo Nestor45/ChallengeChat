@@ -4,7 +4,7 @@ import {LaunchList} from "./components/LaunchList"
 import logo from "./assets/spaceX-Logo.png"
 import logoname from "./assets/spacex-logo-name.png"
 import { LaunchDetails } from "./components/LaunchDetails";
-import { NameCompo } from "./components/chatcomponents/NameCompo";
+import { ChatComponent } from "./components/chatcomponents/ChatComponent";
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LaunchList/>}></Route>
         <Route path="launch/:launchId" element={<LaunchDetails/>}></Route>
-        <Route path="/chat" element={<NameCompo/>}></Route>
+        <Route path="/chat" element={<ChatComponent/>}></Route>
       </Routes>
     </div>
   )
