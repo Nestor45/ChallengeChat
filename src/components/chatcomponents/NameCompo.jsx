@@ -1,8 +1,11 @@
 import { Formik, Form, Field} from 'formik'
-import { Heading, FormControl, FormLabel, FormErrorMessage, Input, Box, Text } from "@chakra-ui/react"
+import { Heading, FormControl, FormLabel, FormErrorMessage, Input, Box, Spacer } from "@chakra-ui/react"
 import { useState } from 'react'
+import { DataResComponent } from "./DataResComponent";
 export function NameCompo() {
+
     const [name, setName] = useState('')
+
     return (
         <>
             <Box shadow='lg' bg="gray.100" p="4" m="4" borderRadius="lg">
@@ -69,7 +72,8 @@ export function NameCompo() {
                                     </FormControl>
                                 )}
                             </Field>
-                            <Text>{ name }</Text>
+                            
+                            <DataResComponent {...props}/>
                         </Form>
                     )}
                 </Formik>

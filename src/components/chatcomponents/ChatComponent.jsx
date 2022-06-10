@@ -10,17 +10,13 @@ export function ChatComponent () {
                 <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
                     <NameCompo />
                 </Box>
-                <DataResComponent/>
                 <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
                     <DateCompo/>
                 </Box>
-                <DataResComponent/>
                 <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
                     <DataCompo/>
                 </Box>
-                <DataResComponent/>
                 <Button
-                    
                     size="lg"
                     mt={8}
                     colorScheme='teal'
@@ -28,7 +24,6 @@ export function ChatComponent () {
                 >
                     Enviar
                 </Button>
-                <DataResComponent/>
             </Box>
         </>
     )

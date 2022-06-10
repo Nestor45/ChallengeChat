@@ -3,7 +3,9 @@ import { Heading, FormControl, FormLabel, FormErrorMessage, Input, Box, Text } f
 import { useState } from 'react'
 
 export function DateCompo () {
+
     const [date, setDate] = useState('')
+    
     return (
         <>
             <Box shadow='lg' bg="gray.100" p="4" m="4" borderRadius="lg">

@@ -1,9 +1,12 @@
 import { Formik, Form, Field} from 'formik'
 import { Heading, FormControl, FormLabel, FormErrorMessage, Input, Box, Text } from "@chakra-ui/react"
 import { useState } from 'react'
+import { DataResComponent } from "./DataResComponent";
 
 export function DataCompo () {
+
     const [data, setData] = useState({})
+
     return (
         <>
             <Box shadow='lg' bg="gray.100" p="4" m="4" borderRadius="lg">
@@ -25,16 +28,16 @@ export function DataCompo () {
                         <Heading as="h4" size="md" m="4" mb={4}>Datos del contacto</Heading>
                         <Field name="email">
                             {({ field, form }) => 
-                                <FormControl isInvalid={form.errors.day && form.touched.day}>
+                                <FormControl isInvalid={form.errors.email && form.touched.email}>
                                     <FormLabel htmlFor='email'></FormLabel>
-                                    <Input {...field} id='email' type="email" placeholder='correo' />
+                                    <Input {...field} id='email' type="email" placeholder='Correo' />
                                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                                 </FormControl>
                             }
                         </Field>
                         <Field name="phone">
                             {({ field, form }) => 
-                                <FormControl isInvalid={form.errors.day && form.touched.day}>
+                                <FormControl isInvalid={form.errors.phone && form.touched.phone}>
                                     <FormLabel htmlFor='phone'></FormLabel>
                                     <Input {...field} id='phone' placeholder='5468731537' />
                                     <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
