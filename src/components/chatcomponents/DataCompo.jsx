@@ -41,6 +41,14 @@ export function DataCompo () {
                                 }
                             </Field>
                             <DataResComponent {...props}/>
+                            {
+                                props.values.phone.length === 0 ? <></> : (
+                                    <Box shadow='lg' bg="gray.100" p="4" m="4" borderRadius="lg">
+                                        <Text>Si tus datos son correctos por favor continuemos</Text>
+                                    </Box>
+                                    
+                                )
+                            }
                         </Form>
                     )}
                 </Formik>
