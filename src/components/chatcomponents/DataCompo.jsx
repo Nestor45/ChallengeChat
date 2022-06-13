@@ -4,9 +4,6 @@ import { useState } from 'react'
 import { DataResComponent } from "./DataResComponent";
 
 export function DataCompo () {
-
-    const [data, setData] = useState({})
-
     return (
         <>
             <Box shadow='lg' bg="gray.100" p="4" m="4" borderRadius="lg">
@@ -18,35 +15,34 @@ export function DataCompo () {
                             errors.email = 'El correo es requerido'
                         } if (!values.phone) {
                             errors.phone = 'El telefono es requerido'
-                        } else {
-                            setData(values) 
                         }
                         return errors
                     }}
                 >
-                    <Form>
-                        <Heading as="h4" size="md" m="4" mb={4}>Datos del contacto</Heading>
-                        <Field name="email">
-                            {({ field, form }) => 
-                                <FormControl isInvalid={form.errors.email && form.touched.email}>
-                                    <FormLabel htmlFor='email'></FormLabel>
-                                    <Input {...field} id='email' type="email" placeholder='Correo' />
-                                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
-                                </FormControl>
-                            }
-                        </Field>
-                        <Field name="phone">
-                            {({ field, form }) => 
-                                <FormControl isInvalid={form.errors.phone && form.touched.phone}>
-                                    <FormLabel htmlFor='phone'></FormLabel>
-                                    <Input {...field} id='phone' placeholder='5468731537' />
-                                    <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
-                                </FormControl>
-                            }
-                        </Field>
-                        <Text>{  data.email }</Text>
-                        <Text>{  data.phone }</Text>
-                    </Form>
+                    {(props) => (
+                        <Form>
+                            <Heading as="h4" size="md" m="4" mb={4}>Datos del contacto</Heading>
+                            <Field name="email">
+                                {({ field, form }) => 
+                                    <FormControl isInvalid={form.errors.email && form.touched.email}>
+                                        <FormLabel htmlFor='email'></FormLabel>
+                                        <Input {...field} id='email' type="email" placeholder='Correo' />
+                                        <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                                    </FormControl>
+                                }
+                            </Field>
+                            <Field name="phone">
+                                {({ field, form }) => 
+                                    <FormControl isInvalid={form.errors.phone && form.touched.phone}>
+                                        <FormLabel htmlFor='phone'></FormLabel>
+                                        <Input {...field} id='phone' placeholder='5468731537' />
+                                        <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
+                                    </FormControl>
+                                }
+                            </Field>
+                            <DataResComponent {...props}/>
+                        </Form>
+                    )}
                 </Formik>
             </Box>
         </>
